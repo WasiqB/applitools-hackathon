@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Applitools Hackathon Suite">
+    <test name="Applitools Hackathon Test - V1">
+        <groups>
+            <run>
+                <include name="app.v1.url"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.applitools.TraditionalTests"/>
+        </classes>
+    </test>
+    <test name="Applitools Hackathon Test - V2">
+        <groups>
+            <run>
+                <include name="app.v2.url"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.applitools.TraditionalTests"/>
+        </classes>
+    </test>
+    <test name="Applitools Hackathon Test - V1 with Ad">
+        <groups>
+            <run>
+                <include name="app.v1.ad"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.applitools.TraditionalTests"/>
+        </classes>
+    </test>
+    <test name="Applitools Hackathon Test - V2 with Ad">
+        <groups>
+            <run>
+                <include name="app.v2.ad"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.applitools.TraditionalTests"/>
+        </classes>
+    </test>
+</suite>
