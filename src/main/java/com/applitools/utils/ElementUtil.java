@@ -1,7 +1,6 @@
 package com.applitools.utils;
 
 import static com.google.common.truth.Truth.assertWithMessage;
-import static java.text.MessageFormat.format;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -38,12 +37,12 @@ public class ElementUtil {
     }
 
     public StringSubject verifyAttr (final String key) {
-        return assertWithMessage (format ("Element Attribute: {0}", key)).that (
+        return assertWithMessage ("Element Attribute does not matches.").that (
             (String) get (e -> e.getAttribute (key)));
     }
 
     public StringSubject verifyText () {
-        return assertWithMessage ("Element text").that (text ());
+        return assertWithMessage ("Element text does not matches.").that (text ());
     }
 
     private <T> T get (final Function<WebElement, T> action) {

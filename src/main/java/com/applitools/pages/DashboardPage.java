@@ -1,6 +1,5 @@
 package com.applitools.pages;
 
-import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assertWithMessage;
 import static java.util.stream.Collectors.toList;
 import static org.openqa.selenium.By.cssSelector;
@@ -30,7 +29,8 @@ public class DashboardPage extends BasePage {
         login ();
         amountHeader ().click ();
         final List<Integer> actualAmounts = expectedAmounts ();
-        assertThat (actualAmounts).isInOrder ();
+        assertWithMessage ("Amount should be sorted.").that (actualAmounts)
+            .isInOrder ();
     }
 
     void atPage () {
