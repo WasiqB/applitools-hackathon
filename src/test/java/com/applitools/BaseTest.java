@@ -29,48 +29,46 @@ public class BaseTest {
     @BeforeTest (alwaysRun = true)
     public void setupTest () {
         chromedriver ().setup ();
-        WebDriver driver = new ChromeDriver ();
+        final WebDriver driver = new ChromeDriver ();
         setupDriver (driver);
-        driverUtil = new DriverUtil (driver);
+        this.driverUtil = new DriverUtil (driver);
     }
 
     @BeforeMethod (groups = APP_V1)
     public void setupTestMethodV1 () {
-        driverUtil.navigate (getConfig (APP_V1));
-    }
-
-    @BeforeMethod (groups = APP_V2)
-    public void setupTestMethodV2 () {
-        driverUtil.navigate (getConfig (APP_V2));
+        this.driverUtil.navigate (getConfig (APP_V1));
     }
 
     @BeforeMethod (groups = APP_V1_AD)
     public void setupTestMethodV1WithAd () {
-        driverUtil.navigate (format ("{0}{1}", getConfig (APP_V1), AD_URL));
+        this.driverUtil.navigate (format ("{0}{1}", getConfig (APP_V1), AD_URL));
+    }
+
+    @BeforeMethod (groups = APP_V2)
+    public void setupTestMethodV2 () {
+        this.driverUtil.navigate (getConfig (APP_V2));
     }
 
     @BeforeMethod (groups = APP_V2_AD)
     public void setupTestMethodV2WithAd () {
-        driverUtil.navigate (format ("{0}{1}", getConfig (APP_V2), AD_URL));
+        this.driverUtil.navigate (format ("{0}{1}", getConfig (APP_V2), AD_URL));
     }
 
     @AfterTest (alwaysRun = true)
     public void teardownTest () {
-        driverUtil.close ();
-        driverUtil.quit ();
+        this.driverUtil.close ();
+        this.driverUtil.quit ();
     }
 
-    private void setupDriver (WebDriver driver) {
-        WebDriver.Timeouts timeout = driver.manage ()
+    private void setupDriver (final WebDriver driver) {
+        final WebDriver.Timeouts timeout = driver.manage ()
             .timeouts ();
         timeout.implicitlyWait (parseInt (getConfig (WAIT_IMPLICIT)), SECONDS);
         timeout.pageLoadTimeout (parseInt (getConfig (TO_PAGE)), SECONDS);
         timeout.setScriptTimeout (parseInt (getConfig (TO_SCRIPT)), SECONDS);
-        driver.manage ()
-            .window ()
-            .setSize (new Dimension (1366, 1024));
-        driver.manage ()
-            .window ()
-            .setPosition (new Point (0, 0));
+        final WebDriver.Window window = driver.manage ()
+            .window ();
+        window.setSize (new Dimension (1366, 1024));
+        window.setPosition (new Point (0, 0));
     }
 }

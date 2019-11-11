@@ -1,6 +1,7 @@
 package com.applitools.utils;
 
 import static com.google.common.truth.Truth.assertWithMessage;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -21,7 +22,7 @@ public class ElementUtil {
 
     public void enterText (final String text) {
         perform (e -> {
-            if (text != null) {
+            if (isNotEmpty (text)) {
                 click ();
                 e.sendKeys (text);
             }

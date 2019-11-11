@@ -2,7 +2,9 @@ package com.applitools.utils;
 
 import static com.applitools.utils.Constants.CONFIG_PATH;
 import static java.lang.System.getProperty;
+import static java.lang.System.getenv;
 import static java.text.MessageFormat.format;
+import static java.util.Optional.ofNullable;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,6 +26,6 @@ public class ConfigUtil {
     }
 
     public static String getConfig (final String key) {
-        return CONFIG.getProperty (key);
+        return ofNullable (getenv (key)).orElse (CONFIG.getProperty (key));
     }
 }

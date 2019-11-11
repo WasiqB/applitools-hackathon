@@ -9,6 +9,7 @@
         </groups>
         <classes>
             <class name="com.applitools.TraditionalTests"/>
+            <class name="com.applitools.VisualAITests"/>
         </classes>
     </test>
     <test name="Applitools Hackathon Test - V2">
@@ -19,6 +20,7 @@
         </groups>
         <classes>
             <class name="com.applitools.TraditionalTests"/>
+            <class name="com.applitools.VisualAITests"/>
         </classes>
     </test>
     <test name="Applitools Hackathon Test - V1 with Ad">
@@ -29,6 +31,7 @@
         </groups>
         <classes>
             <class name="com.applitools.TraditionalTests"/>
+            <class name="com.applitools.VisualAITests"/>
         </classes>
     </test>
     <test name="Applitools Hackathon Test - V2 with Ad">
@@ -39,6 +42,7 @@
         </groups>
         <classes>
             <class name="com.applitools.TraditionalTests"/>
+            <class name="com.applitools.VisualAITests"/>
         </classes>
     </test>
 </suite>
