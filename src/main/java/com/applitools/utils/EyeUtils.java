@@ -36,12 +36,7 @@ public class EyeUtils {
         this.eyes.closeAsync ();
     }
 
-    public void open (final String description, final boolean withBatch) {
-        if (withBatch) {
-            this.eyes.setBatch (BATCH_DP);
-        } else {
-            this.eyes.setBatch (null);
-        }
+    public void open (final String description) {
         this.eyes.open (requireNonNull (this.driverUtil.driver (), "Driver can't be null"), "Applitools Hackathon",
             description);
     }
@@ -54,6 +49,7 @@ public class EyeUtils {
 
     private void setEyeOptions () {
         this.eyes.setApiKey (getConfig (EYE_API));
+        this.eyes.setBatch (BATCH_DP);
         this.eyes.setForceFullPageScreenshot (true);
         this.eyes.setHideScrollbars (true);
         this.eyes.setStitchMode (CSS);
