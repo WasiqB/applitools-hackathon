@@ -19,18 +19,26 @@ public class DashboardPage extends BasePage {
         super (driverUtil);
     }
 
-    public void verifyAds () {
+    public void verifyAds (final boolean visualCheck) {
         login ();
-        assertWithMessage ("2 Ads should be displayed.").that (ads ().size ())
-            .isEqualTo (2);
+        if (!visualCheck) {
+            assertWithMessage ("2 Ads should be displayed.").that (ads ().size ())
+                .isEqualTo (2);
+        } else {
+            this.eyeUtils.check ("Dashboard Ads");
+        }
     }
 
-    public void verifySort () {
+    public void verifySort (final boolean visualCheck) {
         login ();
         amountHeader ().click ();
-        final List<Integer> actualAmounts = expectedAmounts ();
-        assertWithMessage ("Amount should be sorted.").that (actualAmounts)
-            .isInOrder ();
+        if (visualCheck) {
+            this.eyeUtils.check ("Table sort check");
+        } else {
+            final List<Integer> actualAmounts = expectedAmounts ();
+            assertWithMessage ("Amount should be sorted.").that (actualAmounts)
+                .isInOrder ();
+        }
     }
 
     void atPage () {
@@ -72,7 +80,7 @@ public class DashboardPage extends BasePage {
 
     private void login () {
         final LoginPage login = new LoginPage (this.driverUtil);
-        login.login ("abc", "abc", null, true);
+        login.login ("abc", "abc");
     }
 
     private ElementUtil timeHeader () {

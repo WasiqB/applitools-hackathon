@@ -15,23 +15,49 @@ public class LoginPage extends BasePage {
         super (driverUtil);
     }
 
-    public void login (final String userId, final String passwrod, final String expectedMessage, final boolean isValid) {
+    public void login (final String userId, final String password, final String expectedMessage,
+        final boolean isValid) {
+        login (userId, password, expectedMessage, isValid, false);
+    }
+
+    public void login (final String userId, final String password) {
         userName ().enterText (userId);
-        password ().enterText (passwrod);
+        password ().enterText (password);
         login ().click ();
+    }
+
+    public void login (final String userId, final String password, final String expectedMessage, final boolean isValid,
+        final boolean visualCheck) {
+        login (userId, password);
         if (!isValid) {
-            message ().verifyText ()
-                .isEqualTo (expectedMessage);
+            if (visualCheck) {
+                this.eyeUtils.check ("Invalid Login check");
+            } else {
+                message ().verifyText ()
+                    .isEqualTo (expectedMessage);
+            }
         } else {
-            final DashboardPage dashboardPage = new DashboardPage (this.driverUtil);
-            dashboardPage.atPage ();
+            if (visualCheck) {
+                this.eyeUtils.check ("Success Login check");
+            } else {
+                final DashboardPage dashboardPage = new DashboardPage (this.driverUtil);
+                dashboardPage.atPage ();
+            }
         }
     }
 
     public void verifyElements () {
-        verifyIcons ();
-        verifyHeader ();
-        verifyForm ();
+        verifyElements (false);
+    }
+
+    public void verifyElements (final boolean visualCheck) {
+        if (!visualCheck) {
+            verifyIcons ();
+            verifyHeader ();
+            verifyForm ();
+        } else {
+            this.eyeUtils.check ("Login page");
+        }
     }
 
     private List<ElementUtil> formIcons () {
