@@ -19,7 +19,6 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -32,9 +31,7 @@ public class BaseTest {
     public void setupTest () {
         print ("In @BeforeClass (BaseTest.setupTest)...");
         chromedriver ().setup ();
-        final ChromeOptions options = new ChromeOptions ();
-        options.addArguments ("--disable-gpu");
-        final WebDriver driver = new ChromeDriver (options);
+        final WebDriver driver = new ChromeDriver ();
         setupDriver (driver);
         this.driverUtil = new DriverUtil (driver);
     }

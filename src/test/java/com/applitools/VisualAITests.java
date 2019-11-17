@@ -12,6 +12,7 @@ import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 public class VisualAITests extends BaseVisualTest {
+    @Ignore
     @Test (groups = { APP_V1, APP_V2 })
     public void testCanvasChart () {
         print ("In @Test (VisualAITests.testCanvasChart)...");
@@ -26,6 +27,7 @@ public class VisualAITests extends BaseVisualTest {
         dashboardPage.verifyAds (true);
     }
 
+    @Ignore
     @Test (groups = { APP_V1, APP_V2 }, description = "Login Element verification")
     public void testLoginElements () {
         print ("In @Test (VisualAITests.testLoginElements)...");
@@ -33,8 +35,8 @@ public class VisualAITests extends BaseVisualTest {
         login.verifyElements (true);
     }
 
-    @Ignore
-    @Test (dataProvider = "loginData", dataProviderClass = LoginDataProvider.class, groups = { APP_V1, APP_V2 })
+    @Test (description = "Login functionality test", dataProvider = "loginData", dataProviderClass = LoginDataProvider.class, groups = {
+        APP_V1, APP_V2 })
     public void testLoginFunctionality (final String userId, final String password, final String expectedMessage,
         final boolean isValid) {
         print ("In @Test (VisualAITests.testLoginFunctionality)...");

@@ -29,16 +29,12 @@ public class LoginPage extends BasePage {
     public void login (final String userId, final String password, final String expectedMessage, final boolean isValid,
         final boolean visualCheck) {
         login (userId, password);
-        if (!isValid) {
-            if (visualCheck) {
-                this.eyeUtils.check ("Invalid Login check");
-            } else {
+        if (visualCheck) {
+            this.eyeUtils.check ("Login check");
+        } else {
+            if (!isValid) {
                 message ().verifyText ()
                     .isEqualTo (expectedMessage);
-            }
-        } else {
-            if (visualCheck) {
-                this.eyeUtils.check ("Success Login check");
             } else {
                 final DashboardPage dashboardPage = new DashboardPage (this.driverUtil);
                 dashboardPage.atPage ();
