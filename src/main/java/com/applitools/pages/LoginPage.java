@@ -8,16 +8,12 @@ import java.util.List;
 
 import com.applitools.utils.DriverUtil;
 import com.applitools.utils.ElementUtil;
+import com.applitools.utils.TestCase;
 import com.google.common.truth.StringSubject;
 
 public class LoginPage extends BasePage {
     public LoginPage (final DriverUtil driverUtil) {
         super (driverUtil);
-    }
-
-    public void login (final String userId, final String password, final String expectedMessage,
-        final boolean isValid) {
-        login (userId, password, expectedMessage, isValid, false);
     }
 
     public void login (final String userId, final String password) {
@@ -26,34 +22,21 @@ public class LoginPage extends BasePage {
         login ().click ();
     }
 
-    public void login (final String userId, final String password, final String expectedMessage, final boolean isValid,
-        final boolean visualCheck) {
-        login (userId, password);
-        if (visualCheck) {
-            this.eyeUtils.check ("Login check");
+    public void login (final TestCase testCase) {
+        login (testCase.getUserId (), testCase.getPassword ());
+        if (!testCase.isValid ()) {
+            message ().verifyText ()
+                .isEqualTo (testCase.getMessage ());
         } else {
-            if (!isValid) {
-                message ().verifyText ()
-                    .isEqualTo (expectedMessage);
-            } else {
-                final DashboardPage dashboardPage = new DashboardPage (this.driverUtil);
-                dashboardPage.atPage ();
-            }
+            final DashboardPage dashboardPage = new DashboardPage (this.driverUtil);
+            dashboardPage.atPage ();
         }
     }
 
     public void verifyElements () {
-        verifyElements (false);
-    }
-
-    public void verifyElements (final boolean visualCheck) {
-        if (!visualCheck) {
-            verifyIcons ();
-            verifyHeader ();
-            verifyForm ();
-        } else {
-            this.eyeUtils.check ("Login page");
-        }
+        verifyIcons ();
+        verifyHeader ();
+        verifyForm ();
     }
 
     private List<ElementUtil> formIcons () {

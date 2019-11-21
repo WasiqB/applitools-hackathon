@@ -8,10 +8,9 @@ import static com.applitools.utils.DebugUtil.print;
 
 import com.applitools.pages.DashboardPage;
 import com.applitools.pages.LoginPage;
-import org.testng.annotations.Ignore;
+import com.applitools.utils.TestCase;
 import org.testng.annotations.Test;
 
-@Ignore
 public class TraditionalTests extends BaseTest {
     @Test (groups = { APP_V1, APP_V2 })
     public void testCanvasChart () {
@@ -34,11 +33,10 @@ public class TraditionalTests extends BaseTest {
     }
 
     @Test (dataProvider = "loginData", dataProviderClass = LoginDataProvider.class, groups = { APP_V1, APP_V2 })
-    public void testLoginFunctionality (final String userId, final String password, final String expectedMessage,
-        final boolean isValid) {
+    public void testLoginFunctionality (final TestCase testCase) {
         print ("In @Test (TraditionalTests.testLoginFunctionality)...");
         final LoginPage login = new LoginPage (this.driverUtil);
-        login.login (userId, password, expectedMessage, isValid);
+        login.login (testCase);
     }
 
     @Test (groups = { APP_V1, APP_V2 })

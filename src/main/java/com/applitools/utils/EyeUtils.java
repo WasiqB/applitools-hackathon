@@ -9,6 +9,7 @@ import static java.util.Objects.requireNonNull;
 import com.applitools.eyes.BatchInfo;
 import com.applitools.eyes.EyesRunner;
 import com.applitools.eyes.RectangleSize;
+import com.applitools.eyes.StdoutLogHandler;
 import com.applitools.eyes.TestResultsSummary;
 import com.applitools.eyes.selenium.ClassicRunner;
 import com.applitools.eyes.selenium.Eyes;
@@ -53,11 +54,11 @@ public class EyeUtils {
         this.eyes.setForceFullPageScreenshot (true);
         this.eyes.setHideScrollbars (true);
         this.eyes.setStitchMode (CSS);
+        this.eyes.setLogHandler (new StdoutLogHandler (true));
         final Dimension size = this.driverUtil.driver ()
             .manage ()
             .window ()
             .getSize ();
         this.eyes.setExplicitViewportSize (new RectangleSize (size.getWidth (), size.getHeight ()));
-        this.eyes.setBaselineEnvName ("Applitools Hackathon");
     }
 }

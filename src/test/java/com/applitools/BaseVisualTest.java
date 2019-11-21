@@ -1,7 +1,5 @@
 package com.applitools;
 
-import static com.applitools.utils.Constants.APP_V1;
-import static com.applitools.utils.Constants.APP_V2;
 import static com.applitools.utils.DebugUtil.print;
 import static java.text.MessageFormat.format;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
@@ -9,17 +7,17 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 import java.lang.reflect.Method;
 
 import com.applitools.utils.EyeUtils;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class BaseVisualTest extends BaseTest {
-    private int      count;
-    private EyeUtils eyes;
+    EyeUtils eyes;
+    private int count;
 
-    @AfterMethod (groups = { APP_V1, APP_V2 })
+    @AfterMethod (alwaysRun = true)
     public void closeVisualTests () {
         print ("In @AfterMethod (BaseVisualTest.closeVisualTestsV1)...");
         this.eyes.close ();
@@ -37,14 +35,14 @@ public class BaseVisualTest extends BaseTest {
         this.eyes.open (description);
     }
 
-    @BeforeClass (alwaysRun = true)
+    @BeforeTest (alwaysRun = true)
     public void setupVisualTests () {
         print ("In @BeforeClass (BaseVisualTest.setupVisualTests)...");
         this.eyes = new EyeUtils (this.driverUtil);
         this.count = 0;
     }
 
-    @AfterClass (alwaysRun = true)
+    @AfterTest (alwaysRun = true)
     public void teardownVisualTests () {
         print ("In @AfterClass (BaseVisualTest.teardownVisualTests)...");
         this.eyes.quit ();

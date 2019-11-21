@@ -1,0 +1,11 @@
+---
+log_dir: "/logs"
+loggers:
+- archive: null
+  file_name: null
+  level: "DEBUG"
+  message_pattern: "[%d{HH:mm:ss.SSS}] [%-5level] - %msg (%logger{1}:%L) %throwable{short.message}%n"
+  name: "console-log"
+  path_pattern: null
+  type: "CONSOLE"
+status: "WARN"

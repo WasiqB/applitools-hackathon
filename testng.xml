@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Applitools Hackathon Suite">
+    <listeners>
+        <listener class-name="com.github.wasiqb.coteafs.listeners.ConfigListener"/>
+        <listener class-name="com.github.wasiqb.coteafs.listeners.SuiteListener"/>
+        <listener class-name="com.github.wasiqb.coteafs.listeners.TestListener"/>
+        <listener class-name="com.github.wasiqb.coteafs.listeners.ExecutionListener"/>
+        <listener class-name="com.github.wasiqb.coteafs.listeners.DataProviderListener"/>
+        <listener class-name="com.github.wasiqb.coteafs.listeners.AnnotationTransformer"/>
+        <listener class-name="com.github.wasiqb.coteafs.listeners.SuiteResultReporter"/>
+    </listeners>
     <test name="Applitools Hackathon Test - V1">
         <groups>
             <run>
@@ -8,7 +17,7 @@
             </run>
         </groups>
         <classes>
-            <class name="com.applitools.TraditionalTests"/>
+            <!--            <class name="com.applitools.TraditionalTests"/>-->
             <class name="com.applitools.VisualAITests"/>
         </classes>
     </test>
@@ -19,7 +28,7 @@
             </run>
         </groups>
         <classes>
-            <class name="com.applitools.TraditionalTests"/>
+            <!--            <class name="com.applitools.TraditionalTests"/>-->
             <class name="com.applitools.VisualAITests"/>
         </classes>
     </test>
@@ -30,7 +39,7 @@
             </run>
         </groups>
         <classes>
-            <class name="com.applitools.TraditionalTests"/>
+            <!--            <class name="com.applitools.TraditionalTests"/>-->
             <class name="com.applitools.VisualAITests"/>
         </classes>
     </test>
@@ -41,7 +50,7 @@
             </run>
         </groups>
         <classes>
-            <class name="com.applitools.TraditionalTests"/>
+            <!--            <class name="com.applitools.TraditionalTests"/>-->
             <class name="com.applitools.VisualAITests"/>
         </classes>
     </test>

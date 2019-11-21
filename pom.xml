@@ -57,6 +57,25 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>28.1-jre</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.wasiqb.coteafs</groupId>
+            <artifactId>listeners</artifactId>
+            <version>2.2.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.wasiqb.coteafs</groupId>
+            <artifactId>logger</artifactId>
+            <version>2.2.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.wasiqb.coteafs</groupId>
+            <artifactId>configs</artifactId>
+            <version>2.1.4</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

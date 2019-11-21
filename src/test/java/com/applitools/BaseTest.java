@@ -19,15 +19,15 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 
 public class BaseTest {
     private static final String AD_URL = "?showAd=true";
     DriverUtil driverUtil;
 
-    @BeforeClass (alwaysRun = true)
+    @BeforeTest (alwaysRun = true)
     public void setupTest () {
         print ("In @BeforeClass (BaseTest.setupTest)...");
         chromedriver ().setup ();
@@ -60,7 +60,7 @@ public class BaseTest {
         this.driverUtil.navigate (format ("{0}{1}", getConfig (APP_V2), AD_URL));
     }
 
-    @AfterClass (alwaysRun = true)
+    @AfterTest (alwaysRun = true)
     public void teardownTest () {
         print ("In @AfterClass (BaseTest.teardownTest)...");
         this.driverUtil.close ();

@@ -1,0 +1,13 @@
+---
+log:
+  configurations: true
+  data_provider: true
+  execution: true
+  suite_results: true
+  suites: true
+  tests: true
+recover:
+  enable: false
+  logging: true
+  max_retry: 2
+  on_exceptions: []
