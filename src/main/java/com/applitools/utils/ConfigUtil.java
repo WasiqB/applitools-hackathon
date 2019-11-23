@@ -26,6 +26,6 @@ public class ConfigUtil {
     }
 
     public static String getConfig (final String key) {
-        return ofNullable (getenv (key)).orElse (CONFIG.getProperty (key));
+        return ofNullable (getenv (key)).orElse (ofNullable (getProperty (key)).orElse (CONFIG.getProperty (key)));
     }
 }

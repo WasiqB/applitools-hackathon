@@ -5,7 +5,6 @@ import static com.applitools.utils.Constants.WAIT_EXPLICIT;
 import static com.google.common.truth.Truth.assertWithMessage;
 import static java.lang.Integer.parseInt;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfAllElementsLocatedBy;
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -30,12 +29,8 @@ public class DriverUtil {
         perform (WebDriver::close);
     }
 
-    public WebDriver driver () {
-        return this.driver;
-    }
-
     public ElementUtil find (final By locator) {
-        return new ElementUtil (this.wait.until (visibilityOfElementLocated (locator)));
+        return finds (locator).get (0);
     }
 
     public List<ElementUtil> finds (final By locator) {
@@ -55,6 +50,14 @@ public class DriverUtil {
 
     public StringSubject verifyUrl () {
         return assertWithMessage ("Page URL mismatched.").that (get (WebDriver::getCurrentUrl));
+    }
+
+    public WebDriverWait webDriverWait () {
+        return this.wait;
+    }
+
+    WebDriver driver () {
+        return this.driver;
     }
 
     private <T> T get (final Function<WebDriver, T> action) {

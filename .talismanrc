@@ -1,0 +1,5 @@
+fileignoreconfig:
+- filename: src/main/java/com/applitools/utils/TestCase.java
+  checksum: d3a8ef797f35f3c8ff057efee8b2e81cccbbc7606d34b091851752009c2ace34
+  ignore_detectors: []
+scopeconfig: []

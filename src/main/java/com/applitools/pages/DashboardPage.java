@@ -4,6 +4,7 @@ import static com.google.common.truth.Truth.assertWithMessage;
 import static java.util.stream.Collectors.toList;
 import static org.openqa.selenium.By.cssSelector;
 import static org.openqa.selenium.By.id;
+import static org.openqa.selenium.By.linkText;
 
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -19,9 +20,9 @@ public class DashboardPage extends BasePage {
         super (driverUtil);
     }
 
-    public void login () {
-        final LoginPage login = new LoginPage (this.driverUtil);
-        login.login ("abc", "abc");
+    public void goToCompareExpenses () {
+        login ();
+        compareExpenses ().click ();
     }
 
     public void verifyAds (final boolean visual) {
@@ -64,6 +65,10 @@ public class DashboardPage extends BasePage {
         return this.driverUtil.finds (cssSelector ("table#transactionsTable tbody tr td:last-child"));
     }
 
+    private ElementUtil compareExpenses () {
+        return this.driverUtil.find (linkText ("Compare Expenses"));
+    }
+
     private List<Integer> expectedAmounts () {
         return amounts ().stream ()
             .map (ElementUtil::text)
@@ -77,6 +82,11 @@ public class DashboardPage extends BasePage {
                 }
             })
             .collect (toList ());
+    }
+
+    private void login () {
+        final LoginPage login = new LoginPage (this.driverUtil);
+        login.login ("abc", "abc");
     }
 
     private ElementUtil timeHeader () {
