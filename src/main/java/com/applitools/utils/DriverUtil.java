@@ -49,11 +49,7 @@ public class DriverUtil {
     }
 
     public StringSubject verifyUrl () {
-        return assertWithMessage ("Page URL mismatched.").that (get (WebDriver::getCurrentUrl));
-    }
-
-    public WebDriverWait webDriverWait () {
-        return this.wait;
+        return assertWithMessage ("Page URL mismatch.").that (get (WebDriver::getCurrentUrl));
     }
 
     WebDriver driver () {

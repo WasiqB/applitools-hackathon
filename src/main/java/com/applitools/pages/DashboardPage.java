@@ -37,7 +37,7 @@ public class DashboardPage extends BasePage {
         login ();
         amountHeader ().click ();
         if (!visual) {
-            final List<Integer> actualAmounts = expectedAmounts ();
+            final List<Integer> actualAmounts = actualAmounts ();
             assertWithMessage ("Amount should be sorted.").that (actualAmounts)
                 .isInOrder ();
         }
@@ -48,6 +48,21 @@ public class DashboardPage extends BasePage {
             .contains (URL);
         timeHeader ().verifyText ()
             .startsWith ("Your nearest branch closes in");
+    }
+
+    private List<Integer> actualAmounts () {
+        return amounts ().stream ()
+            .map (ElementUtil::text)
+            .map (s -> {
+                try {
+                    DecimalFormat format = new DecimalFormat ("+ #,##0.00 USD;- #,##0.00 USD");
+                    return format.parse (s)
+                        .intValue ();
+                } catch (ParseException e) {
+                    throw new RuntimeException (e);
+                }
+            })
+            .collect (toList ());
     }
 
     private List<ElementUtil> ads () {
@@ -67,21 +82,6 @@ public class DashboardPage extends BasePage {
 
     private ElementUtil compareExpenses () {
         return this.driverUtil.find (linkText ("Compare Expenses"));
-    }
-
-    private List<Integer> expectedAmounts () {
-        return amounts ().stream ()
-            .map (ElementUtil::text)
-            .map (s -> {
-                try {
-                    DecimalFormat format = new DecimalFormat ("+ #,##0.00 USD;- #,##0.00 USD");
-                    return format.parse (s)
-                        .intValue ();
-                } catch (ParseException e) {
-                    throw new RuntimeException (e);
-                }
-            })
-            .collect (toList ());
     }
 
     private void login () {

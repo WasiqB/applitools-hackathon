@@ -1,15 +1,19 @@
 ## Applitools Hackathon
 
-My submission for Applitools Hackathon.
+This Repo contains the Solution for Applitools Hackathon.
+Page Object Model has been used for verifying the tests using selenium/applitools eyes.
 
-### Pre-requisite
+### :warning: Pre-requisite
 
 - Java 8 JDK
 - Maven
 - IntelliJ IDEA / Eclipse
 - Applitools Eyes API
+- IDE Plugin for TestNG
 
-### Framework / Libraries used
+> [Talisman](https://github.com/thoughtworks/talisman) is used to identify secure string does not get checked in while commiting the code.
+
+### :nut_and_bolt: Framework / Libraries used
 
 - `eyes-selenium-java3:3.158.4`
 - `selenium-webdriver:3.141.59`
@@ -17,9 +21,9 @@ My submission for Applitools Hackathon.
 - `testng:7.0.0`
 - `truth:1.0`
 
-### Test configuration
+### :wrench: Test configuration
 
-Test requires a config properties file named `hackathon.properties` file stored at `src/test/resources` directory.
+Test requires a config properties file named `hackathon.properties` to be located at `src/test/resources` directory.
 
 #### Sample config
 
@@ -33,14 +37,14 @@ app_v2_url=https://demo.applitools.com/hackathonV2.html  # v2 app url.
 eyes_debug=false       # Applitools SDK logging.
 ```
 
-### Test classes
+### :page_with_curl: Test classes
 
 There are **two** test classes in this project.
 
 1. `TraditionalTests`: For testing both the apps in traditional selenium approach.
 1. `VisualAITests`: For verifying both the apps using Applitools Eyes SDK.
 
-### Test methods
+### :calling: Test methods
 
 There are **five** test methods in both the test classes.
 
@@ -50,9 +54,9 @@ There are **five** test methods in both the test classes.
 1. `testCanvasChart`: Tests the Bar chart.
 1. `testDynamicContent`: Tests dynamic ads page.
 
-### How to run the tests?
+### :running: How to run the tests?
 
-#### 0. API key
+#### 0. :key: API key
 
 You need to pass your API key by either of the 3 options.
 
@@ -64,18 +68,18 @@ Key to use for this is `eyes_api`
 
 > :bulb: Pro Tip: First preference will be given to environment variable.
 
-#### 1. Maven command line
+#### 1. :computer: Maven command line
 
 Test can be run by executing the following command in your terminal with environment variable.
 
 ```shell script
-$ eyes_api=<Your Applitools Key> mvn clean install 
+$ eyes_api=<Your Applitools Key> mvn clean install
 ```
 
 Or, with system property.
 
 ```shell script
-$ mvn clean install -Deyes_api=<Your Applitools Key> 
+$ mvn clean install -Deyes_api=<Your Applitools Key>
 ```
 
 Or in `hackathon.properties` file.
@@ -86,8 +90,18 @@ eyes_api=<Your Applitools Key>
 . . .
 ```
 
-#### 2. Idea IntelliJ / Eclipse IDE
+and then run,
+
+```shell script
+$ mvn clean install
+```
+
+#### 2. :crystal_ball: Idea IntelliJ / Eclipse IDE
 
 Open the project and create Run configuration for TestNG by selecting the `testng.xml` file and setting the API key in either Environment variable or VM arguments.
 
 Once run configuration is created, use it to run the tests.
+
+### :question: Help?
+
+In case of any query or details about tests, please contact me @ wasiq.bhamla@thoughtworks.com
